@@ -20,10 +20,13 @@ OMEdit
 - open OMEdit (using QT_PLUGIN_PATH)
   - SVG icons loading for toolbar (using qt5.full)
   - "Tools" -> "Open Terminal" is starting xterm
+    - by linking x-terminal-emulator to xterm in the wrappig process
+    - terminal emulator can also be set manually by "Tools -> Options -> General -> Terminal Command"
   - creating Modelica Classes
   - simulation compilation
     - library lgfortran found (using LD_LIBRARY_PATH + gfortran.cc.lib)
     - libraries llapack and lblas found (using LIBRARY_PATH + openblas + lapack)
+  - export FMU (using cmake + clang + zip)
 
 ## disabled / not working
 - OM_OMC_ENABLE_FORTRAN + OM_OMC_ENABLE_IPOPT because of fortran linking errors at openmodelica-core

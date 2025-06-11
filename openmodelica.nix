@@ -50,6 +50,8 @@
   opencl-clhpp,
   ocl-icd,
   xterm,
+  clang,
+  zip,
 }:
 
 let
@@ -70,6 +72,8 @@ stdenv.mkDerivation {
 
   # buildInputs for runtime dependencies needed by the wrapped binaries
   buildInputs = [
+    zip
+    clang
     gcc
     autoconf
     automake
@@ -175,7 +179,10 @@ stdenv.mkDerivation {
         makeWrapper "$exe" "$out/bin/$(basename $exe)" \
           --prefix LD_LIBRARY_PATH : $wrapper_LIBRARY_PATH \
           --prefix LIBRARY_PATH : $wrapper_LIBRARY_PATH \
-          --prefix QT_PLUGIN_PATH : "${qt5.full}/lib/qt-${qtVersion}/plugins"
+          --prefix QT_PLUGIN_PATH : "${qt5.full}/lib/qt-${qtVersion}/plugins" \
+          --prefix PATH : "${cmake}/bin" \
+          --prefix PATH : "${clang}/bin" \
+          --prefix PATH : "${zip}/bin"
       fi
     done
   '';
