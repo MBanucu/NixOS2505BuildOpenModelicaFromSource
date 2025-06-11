@@ -14,3 +14,21 @@ Inside the nix shell the most interesting available program is
 ```bash
 OMEdit
 ```
+
+## working features
+- compilation of openmodelica-core (using "-DOM_OMEDIT_ENABLE_QTWEBENGINE=ON")
+- open OMEdit (using QT_PLUGIN_PATH)
+  - SVG icons loading for toolbar (using qt5.full)
+  - "Tools" -> "Open Terminal" is starting xterm
+  - creating Modelica Classes
+  - simulation compilation
+    - library lgfortran found (using LD_LIBRARY_PATH + gfortran.cc.lib)
+    - libraries llapack and lblas found (using LIBRARY_PATH + openblas + lapack)
+
+## disabled / not working
+- OM_OMC_ENABLE_FORTRAN + OM_OMC_ENABLE_IPOPT because of fortran linking errors at openmodelica-core
+- Ctrl + right click into xterm (using "Tools" -> "Open Terminal" in OMEdit) crashes xterm
+
+## unknown workarounds
+- Replace -isystem with -I in NIX_CFLAGS_COMPILE and I don't know why this has to be done or how to correct it correctly
+- ccache maybe doesn't make sense here since the compilation will only run once on the same codebase and ccache doesn't have access to outside global cache locations
