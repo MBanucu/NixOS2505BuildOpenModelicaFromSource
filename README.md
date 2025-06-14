@@ -27,6 +27,8 @@ OMEdit
     - library lgfortran found (using LD_LIBRARY_PATH + gfortran.cc.lib)
     - libraries llapack and lblas found (using LIBRARY_PATH + openblas + lapack)
   - export FMU (using cmake + clang + zip)
+  - open mo files created on Windows version of OpenModelica OMEdit (it just works)
+  - simulate and plot mo files created on Winsows version of OpenModelica OMEdit (it just works)
 
 ## disabled / not working
 - OM_OMC_ENABLE_FORTRAN + OM_OMC_ENABLE_IPOPT because of fortran linking errors at openmodelica-core
